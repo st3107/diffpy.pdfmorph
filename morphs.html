@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDFmorph.morphs Package &mdash; PDFmorph 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="diffpy.pdfmorph.pdfplot" href="mod_pdfplot.html" />
+    <link rel="prev" title="Package API" href="package.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PDFmorph
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">PDFmorph Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">Package API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PDFmorph</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="package.html">Package API</a></li>
+      <li class="breadcrumb-item active">PDFmorph.morphs Package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/morphs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pdfmorph-morphs-package">
+<h1>PDFmorph.morphs Package<a class="headerlink" href="#pdfmorph-morphs-package" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-diffpy.pdfmorph.morphs.morph">
+<span id="diffpy-pdfmorph-morphs-morph-module"></span><h2>diffpy.pdfmorph.morphs.morph module<a class="headerlink" href="#module-diffpy.pdfmorph.morphs.morph" title="Permalink to this heading">¶</a></h2>
+<p>Morph – base class for defining a morph.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diffpy.pdfmorph.morphs.morph.</span></span><span class="sig-name descname"><span class="pre">Morph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for implementing a morph on an objective given a reference.</p>
+<p>Adapted from diffpy.pdfgetx to include two sets of arrays that get passed
+through. In most cases, the objective is modified by a morph, but it is
+acceptable for morph the reference as well, such as to change the range of
+the array.</p>
+<p>Note that attributes are taken from config when not found locally. The
+morph may modify the config dictionary. This is the means by which to
+communicate automatically modified attributes.</p>
+<p>Class attributes:</p>
+<p>summary      – short description of a morph
+xinlabel     – descriptive label for the x input array
+yinlabel     – descriptive label for the y input array
+xoutlabel    – descriptive label for the x output array
+youtlabel    – descriptive label for the y output array
+parnames     – list of names of configuration variables</p>
+<p>Instance attributes:</p>
+<p>config      – dictionary that contains all configuration variables
+xobjin      – last objective input x data
+yobjin      – last objective input y data
+xobjout     – last objective result x data
+yobjout     – last objective result y data
+xrefin      – last reference input x data
+yrefin      – last reference input y data
+xrefout     – last reference result x data
+yrefout     – last reference result y data</p>
+<p>Properties:</p>
+<p>xyobjin     – tuple of (xobjin, yobjin)
+xyobjout    – tuple of (xobjout, yobjout)
+xyrefin     – tuple of (xrefin, yrefin)
+xyrefout    – tuple of (xrefout, yrefout)
+xyallout    – tuple of (xobjout, yobjout, xrefout, yrefout)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.applyConfig">
+<span class="sig-name descname"><span class="pre">applyConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph.applyConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.applyConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process any configuration data from a dictionary.</p>
+<p>config   – Configuration dictionary.</p>
+<p>No return value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.checkConfig">
+<span class="sig-name descname"><span class="pre">checkConfig</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph.checkConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.checkConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify data in self.config.  No action by default.</p>
+<p>To be overridden in a derived class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.morph">
+<span class="sig-name descname"><span class="pre">morph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph.morph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.morph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Morph arrays objective or reference.</p>
+<p>xobj, yobj  –  Objective arrays.
+xref, yref  –  Reference arrays.</p>
+<p>Identity operation.  This method should be overloaded in a derived
+class.</p>
+<p>Return a tuple of numpy arrays (xobjout, yobjout, xrefout, yrefout)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.parnames">
+<span class="sig-name descname"><span class="pre">parnames</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.parnames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.plotInputs">
+<span class="sig-name descname"><span class="pre">plotInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph.plotInputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.plotInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot input arrays using matplotlib.pyplot</p>
+<p>xylabels – flag for updating x and y axis labels</p>
+<p>Return a list of matplotlib line objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.plotOutputs">
+<span class="sig-name descname"><span class="pre">plotOutputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xylabels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">plotargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morph.html#Morph.plotOutputs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.plotOutputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot output arrays using matplotlib.pyplot</p>
+<p>xylabels – flag for updating x and y axis labels
+plotargs – arguments passed to the pylab plot function. Note that</p>
+<blockquote>
+<div><p>“label” will be ignored.</p>
+</div></blockquote>
+<p>Return a list of matplotlib line objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'identity</span> <span class="pre">transformation'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xinlabel">
+<span class="sig-name descname"><span class="pre">xinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'x'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xoutlabel">
+<span class="sig-name descname"><span class="pre">xoutlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'x'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xoutlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xyallout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyallout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xyallout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of all output arrays</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xyobjin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyobjin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xyobjin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of objective input arrays</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xyobjout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyobjout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xyobjout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of objective output arrays</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xyrefin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyrefin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xyrefin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of reference input arrays</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.xyrefout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyrefout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.xyrefout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a tuple of reference output arrays</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.yinlabel">
+<span class="sig-name descname"><span class="pre">yinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'y'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.yinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morph.Morph.youtlabel">
+<span class="sig-name descname"><span class="pre">youtlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'y'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morph.Morph.youtlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diffpy.pdfmorph.morphs.morphchain">
+<span id="diffpy-pdfmorph-morphs-morphchain-module"></span><h2>diffpy.pdfmorph.morphs.morphchain module<a class="headerlink" href="#module-diffpy.pdfmorph.morphs.morphchain" title="Permalink to this heading">¶</a></h2>
+<p>MorphChain – Chain of morphs executed in order.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diffpy.pdfmorph.morphs.morphchain.</span></span><span class="sig-name descname"><span class="pre">MorphChain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphchain.html#MorphChain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Class for chaining morphs together.</p>
+<p>This class is a queue of morphs that get executed in order via the ‘morph’
+method. This class derives from the built-in list, and list methods are
+used to modify the queue.</p>
+<p>This derives from list and relies on its methods where possible.</p>
+<p>Instance attributes:</p>
+<p>config      – dictionary that contains all configuration variables</p>
+<p>Properties:</p>
+<p>These return tuples of None if there are no morphs.
+xobjin      – last objective input x data
+yobjin      – last objective input y data
+xobjout     – last objective result x data
+yobjout     – last objective result y data
+xrefin      – last reference input x data
+yrefin      – last reference input y data
+xrefout     – last reference result x data
+yrefout     – last reference result y data
+xyobjin     – tuple of (xobjin, yobjin) from first morph
+xyobjout    – tuple of (xobjout, yobjout) from last morph
+xyrefin     – tuple of (xrefin, yrefin) from first morph
+xyrefout    – tuple of (xrefout, yrefout) from last morph
+xyallout    – tuple of (xobjout, yobjout, xrefout, yrefout) from last</p>
+<blockquote>
+<div><p>morph</p>
+</div></blockquote>
+<p>parnames    – Names of parameters collected from morphs (Read only).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.morph">
+<span class="sig-name descname"><span class="pre">morph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphchain.html#MorphChain.morph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.morph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the chain of morphs to the input data.</p>
+<p>Note that config may be altered by the morphs.</p>
+<p>xobj, yobj  –  Objective arrays.
+xref, yref  –  Reference arrays.</p>
+<p>Return a tuple of numpy arrays (xobjout, yobjout, xrefout, yrefout)</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.parnames">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parnames</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.parnames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xobjin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xobjin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xobjin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xobjout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xobjout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xobjout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xrefin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xrefin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xrefin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xrefout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xrefout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xrefout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xyallout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyallout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xyallout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xyobjin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyobjin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xyobjin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xyobjout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyobjout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xyobjout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xyrefin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyrefin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xyrefin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.xyrefout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">xyrefout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.xyrefout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.yobjin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yobjin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.yobjin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.yobjout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yobjout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.yobjout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.yrefin">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yrefin</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.yrefin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphchain.MorphChain.yrefout">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yrefout</span></span><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphchain.MorphChain.yrefout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diffpy-pdfmorph-morphs-morphishape-module">
+<h2>diffpy.pdfmorph.morphs.morphishape module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphishape-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-diffpy.pdfmorph.morphs.morphpdftordf">
+<span id="diffpy-pdfmorph-morphs-morphpdftordf-module"></span><h2>diffpy.pdfmorph.morphs.morphpdftordf module<a class="headerlink" href="#module-diffpy.pdfmorph.morphs.morphpdftordf" title="Permalink to this heading">¶</a></h2>
+<p>class MorphXtalPDFtoRDF – Morph crystal PDFs to RDFs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diffpy.pdfmorph.morphs.morphpdftordf.</span></span><span class="sig-name descname"><span class="pre">MorphXtalPDFtoRDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphpdftordf.html#MorphXtalPDFtoRDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#diffpy.pdfmorph.morphs.morph.Morph" title="diffpy.pdfmorph.morphs.morph.Morph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morph</span></code></a></p>
+<p>Morph crystal PDFs to RDFs.</p>
+<p>This morphs both the objective and the reference.</p>
+<p>Configuration variables:</p>
+<dl class="simple">
+<dt>baselineslope   –  The slope of the PDF baseline.  With the perfect scale,</dt><dd><p>the baseline slope is equal to -4*pi*rho0, where rho0
+is the density of the crystalline sample.</p>
+</dd>
+</dl>
+<p>With s = baselineslope,
+R(r) = r * (G(r) - r * s)</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.morph">
+<span class="sig-name descname"><span class="pre">morph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphpdftordf.html#MorphXtalPDFtoRDF.morph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.morph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Morph to the RDF.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.parnames">
+<span class="sig-name descname"><span class="pre">parnames</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['baselineslope']</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.parnames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Turn</span> <span class="pre">the</span> <span class="pre">PDF</span> <span class="pre">into</span> <span class="pre">the</span> <span class="pre">RDF</span> <span class="pre">for</span> <span class="pre">both</span> <span class="pre">the</span> <span class="pre">objective</span> <span class="pre">and</span> <span class="pre">reference'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.xinlabel">
+<span class="sig-name descname"><span class="pre">xinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r</span> <span class="pre">(A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.xinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.xoutlabel">
+<span class="sig-name descname"><span class="pre">xoutlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r</span> <span class="pre">(A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.xoutlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.yinlabel">
+<span class="sig-name descname"><span class="pre">yinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'G</span> <span class="pre">(1/A^2)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.yinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.youtlabel">
+<span class="sig-name descname"><span class="pre">youtlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'R</span> <span class="pre">(1/A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphpdftordf.MorphXtalPDFtoRDF.youtlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-diffpy.pdfmorph.morphs.morphrdftopdf">
+<span id="diffpy-pdfmorph-morphs-morphrdftopdf-module"></span><h2>diffpy.pdfmorph.morphs.morphrdftopdf module<a class="headerlink" href="#module-diffpy.pdfmorph.morphs.morphrdftopdf" title="Permalink to this heading">¶</a></h2>
+<p>class MorphXtalRDFtoPDF – Morph crystal RDFs to PDFs.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">diffpy.pdfmorph.morphs.morphrdftopdf.</span></span><span class="sig-name descname"><span class="pre">MorphXtalRDFtoPDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphrdftopdf.html#MorphXtalRDFtoPDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#diffpy.pdfmorph.morphs.morph.Morph" title="diffpy.pdfmorph.morphs.morph.Morph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Morph</span></code></a></p>
+<p>Morph crystal RDFs to PDFs.</p>
+<p>This morphs both the objective and the reference.</p>
+<p>Configuration variables:</p>
+<dl class="simple">
+<dt>baselineslope   –  The slope of the PDF baseline.  With the perfect scale,</dt><dd><p>the baseline slope is equal to -4*pi*rho0, where rho0
+is the density of the crystalline sample.</p>
+</dd>
+</dl>
+<p>With s = baselineslope,
+G(r) = R(r) / r + r * s</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.morph">
+<span class="sig-name descname"><span class="pre">morph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yobj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yref</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/diffpy/pdfmorph/morphs/morphrdftopdf.html#MorphXtalRDFtoPDF.morph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.morph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Morph to the PDF.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.parnames">
+<span class="sig-name descname"><span class="pre">parnames</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['baselineslope']</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.parnames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.summary">
+<span class="sig-name descname"><span class="pre">summary</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Turn</span> <span class="pre">the</span> <span class="pre">PDF</span> <span class="pre">into</span> <span class="pre">the</span> <span class="pre">RDF</span> <span class="pre">for</span> <span class="pre">both</span> <span class="pre">the</span> <span class="pre">objective</span> <span class="pre">and</span> <span class="pre">reference'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.summary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.xinlabel">
+<span class="sig-name descname"><span class="pre">xinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r</span> <span class="pre">(A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.xinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.xoutlabel">
+<span class="sig-name descname"><span class="pre">xoutlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'r</span> <span class="pre">(A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.xoutlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.yinlabel">
+<span class="sig-name descname"><span class="pre">yinlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'R</span> <span class="pre">(1/A)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.yinlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.youtlabel">
+<span class="sig-name descname"><span class="pre">youtlabel</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'G</span> <span class="pre">(1/A^2)'</span></em><a class="headerlink" href="#diffpy.pdfmorph.morphs.morphrdftopdf.MorphXtalRDFtoPDF.youtlabel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="diffpy-pdfmorph-morphs-morphresolution-module">
+<h2>diffpy.pdfmorph.morphs.morphresolution module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphresolution-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphrgrid-module">
+<h2>diffpy.pdfmorph.morphs.morphrgrid module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphrgrid-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphscale-module">
+<h2>diffpy.pdfmorph.morphs.morphscale module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphscale-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphshape-module">
+<h2>diffpy.pdfmorph.morphs.morphshape module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphshape-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphshift-module">
+<h2>diffpy.pdfmorph.morphs.morphshift module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphshift-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphsmear-module">
+<h2>diffpy.pdfmorph.morphs.morphsmear module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphsmear-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="diffpy-pdfmorph-morphs-morphstretch-module">
+<h2>diffpy.pdfmorph.morphs.morphstretch module<a class="headerlink" href="#diffpy-pdfmorph-morphs-morphstretch-module" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="package.html" class="btn btn-neutral float-left" title="Package API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mod_pdfplot.html" class="btn btn-neutral float-right" title="diffpy.pdfmorph.pdfplot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2009-2019, Trustees of Columbia University in the City of New York, all rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
